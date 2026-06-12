@@ -38,7 +38,7 @@ def serve():
     port = int(os.environ.get("PORT", 8080))
 
     external_facing_base_url = os.environ.get("AGENT_URL", f"http://{host}:{port}")
-    logger.info(f"--- STARTING WENDY'S DASHBOARD SERVER WITH BASE URL {external_facing_base_url} ---")
+    logger.info(f"--- STARTING QSR'S DASHBOARD SERVER WITH BASE URL {external_facing_base_url} ---")
 
     agent = QSRAgent(base_url=external_facing_base_url)
     agent_executor = QSRAgentExecutor(agent=agent)

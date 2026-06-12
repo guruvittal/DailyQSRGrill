@@ -59,14 +59,14 @@ class QSRAgentExecutor(AgentExecutor):
     ui_event_part = None
     action = None
 
-    logger.info(f"--- WENDY_EXECUTOR: Full incoming message: {context.message.model_dump() if context.message else None} ---")
-    logger.info(f"--- WENDY_EXECUTOR: Requested extensions: {context.requested_extensions} ---")
+    logger.info(f"--- QSR_EXECUTOR: Full incoming message: {context.message.model_dump() if context.message else None} ---")
+    logger.info(f"--- QSR_EXECUTOR: Requested extensions: {context.requested_extensions} ---")
     active_ui_version = try_activate_a2ui_extension(context, self._agent.agent_card)
 
     if active_ui_version:
-      logger.info("--- WENDY_EXECUTOR: A2UI extension is active. Using UI agent. ---")
+      logger.info("--- QSR_EXECUTOR: A2UI extension is active. Using UI agent. ---")
     else:
-      logger.info("--- WENDY_EXECUTOR: A2UI extension is not active. Using text agent. ---")
+      logger.info("--- QSR_EXECUTOR: A2UI extension is not active. Using text agent. ---")
 
     use_streaming = True
     form_user_input = None
@@ -112,9 +112,9 @@ class QSRAgentExecutor(AgentExecutor):
 
     if not query and form_user_input:
       query = form_user_input
-      logger.info(f"--- WENDY_EXECUTOR: Recovered query from form parameter: '{query}' ---")
+      logger.info(f"--- QSR_EXECUTOR: Recovered query from form parameter: '{query}' ---")
 
-    logger.info(f"--- WENDY_EXECUTOR: Final query for LLM: '{query}' ---")
+    logger.info(f"--- QSR_EXECUTOR: Final query for LLM: '{query}' ---")
 
     task = context.current_task
     if not task:
@@ -127,7 +127,7 @@ class QSRAgentExecutor(AgentExecutor):
       capabilities = context.message.metadata.get("a2uiClientCapabilities", {})
       if isinstance(capabilities, dict):
         supported_catalogs = capabilities.get("supportedCatalogIds", [])
-        logger.info(f"--- WENDY_EXECUTOR: client supportedCatalogIds: {supported_catalogs} ---")
+        logger.info(f"--- QSR_EXECUTOR: client supportedCatalogIds: {supported_catalogs} ---")
 
     async for item in self._agent.stream(
         query,

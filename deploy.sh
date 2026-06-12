@@ -28,7 +28,7 @@ AGENT_DISPLAY_NAME="QSR Insights Dashboard"
 AGENT_DESCRIPTION="QSR Insights to Action Agent Dashboard providing executive management, compliance tracking, and longitudinal analytics."
 
 echo "=========================================================="
-echo "🚀 DEPLOYING WENDY'S INSIGHTS DASHBOARD TO CLOUD RUN 🚀"
+echo "🚀 DEPLOYING QSR'S INSIGHTS DASHBOARD TO CLOUD RUN 🚀"
 echo "=========================================================="
 echo "Project ID:      $PROJECT_ID"
 echo "Project Number:  $PROJECT_NUMBER"
