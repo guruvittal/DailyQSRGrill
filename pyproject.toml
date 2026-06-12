@@ -1,0 +1,36 @@
+[project]
+name = "qsrs-insights-dashboard"
+version = "0.1.0"
+description = "QSR Insights to Action Agent Dashboard on Gemini Enterprise"
+readme = "Insights2Action_PRD.md"
+requires-python = ">=3.11"
+dependencies = [
+    "a2a-sdk==0.3.25",
+    "google-adk>=1.28.1",
+    "google-genai>=1.27.0",
+    "python-dotenv>=1.1.0",
+    "uvicorn",
+    "google-cloud-aiplatform>=1.84",
+    "jsonschema>=4.0.0",
+    "starlette>=0.35.0",
+    "sse-starlette>=2.0.0",
+    "google-cloud-bigquery>=3.41.0",
+    "a2ui-agent-sdk>=0.2.1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[[tool.uv.index]]
+url = "https://pypi.org/simple"
+default = true
+
+[project.scripts]
+start = "main:serve"
